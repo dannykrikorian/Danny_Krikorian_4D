@@ -67,3 +67,27 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+APP_URL = "https://YOUR-APP-NAME.streamlit.app"  # replace
+
+st.code(APP_URL, language=None)  # easy copy
+
+st.markdown(
+    f"""
+    [Share on X](https://twitter.com/intent/tweet?text=Try%20this%20political%20compass&url={APP_URL}) ·
+    [Share on Threads](https://www.threads.net/intent/post?text=Try%20this%20political%20compass%20{APP_URL}) ·
+    [Share on Facebook](https://www.facebook.com/sharer/sharer.php?u={APP_URL})
+    """,
+    unsafe_allow_html=True
+)
+# light quadrant shading
+fig.update_layout(plot_bgcolor="white")
+fig.add_shape(type="rect", x0=-10, y0=0,  x1=0,  y1=10, fillcolor="rgba(0,150,255,0.06)", line_width=0)  # Inclusion + Authority
+fig.add_shape(type="rect", x0=-10, y0=-10,x1=0,  y1=0,  fillcolor="rgba(0,255,150,0.06)", line_width=0)  # Inclusion + Anarchy
+fig.add_shape(type="rect", x0=0,  y0=0,  x1=10, y1=10, fillcolor="rgba(255,0,0,0.06)",   line_width=0)  # Exclusion + Authority
+fig.add_shape(type="rect", x0=0,  y0=-10,x1=10, y1=0,  fillcolor="rgba(255,165,0,0.06)", line_width=0)  # Exclusion + Anarchy
+
+# quadrant labels
+fig.add_annotation(x=-5, y=8,  text="Authoritarian–Inclusionist", showarrow=False)
+fig.add_annotation(x=-5, y=-8, text="Anarchist–Inclusionist",    showarrow=False)
+fig.add_annotation(x=5,  y=8,  text="Authoritarian–Exclusionist",showarrow=False)
+fig.add_annotation(x=5,  y=-8, text="Anarchist–Exclusionist",    showarrow=False)
