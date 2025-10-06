@@ -42,3 +42,9 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
+import streamlit as st
+st.set_page_config(
+    page_title="The Purple Initiative Compass",
+    page_icon="🧭",
+    layout="wide"
+)
