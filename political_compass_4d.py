@@ -55,3 +55,15 @@ st.set_page_config(
     page_icon="🧭",
     layout="wide"
 )
+APP_URL = "https://YOUR-APP-NAME.streamlit.app"  # replace
+
+st.code(APP_URL, language=None)  # easy copy
+
+st.markdown(
+    f"""
+    [Share on X](https://twitter.com/intent/tweet?text=Try%20this%20political%20compass&url={APP_URL}) ·
+    [Share on Threads](https://www.threads.net/intent/post?text=Try%20this%20political%20compass%20{APP_URL}) ·
+    [Share on Facebook](https://www.facebook.com/sharer/sharer.php?u={APP_URL})
+    """,
+    unsafe_allow_html=True
+)
