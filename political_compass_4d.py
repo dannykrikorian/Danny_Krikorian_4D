@@ -1,6 +1,13 @@
 import streamlit as st
 import plotly.graph_objects as go
 
+st.markdown(
+    """
+    # The Purple Initiative Compass
+    Explore a 4D slice of our 8D ideology model: **Inclusion ↔ Exclusion** (X) and **Anarchy ↔ Authority** (Y).
+    Move the sliders to plot your position and compare with historical figures and movements.
+    """,
+)
 st.title("4D Political Compass (Authority–Anarchy vs Inclusion–Exclusion)")
 
 st.subheader("Set your position")
