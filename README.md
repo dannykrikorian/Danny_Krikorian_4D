@@ -17,3 +17,23 @@ A simple Streamlit app template for you to modify!
    ```
    $ streamlit run streamlit_app.py
    ```
+# 🧭 The Political Model
+
+An interactive 2D ideological compass built with **Streamlit** and **Matplotlib**.
+
+### Axes
+- **X (Economic):** Left (Communism) → Right (Anarcho-Capitalism)
+- **Y (Social):** Libertarian (Bottom) → Authoritarian (Top)
+
+### Corner Labels
+- **Top-Left:** Communist  
+- **Top-Right:** Fascist  
+- **Bottom-Left:** Libertarian  
+- **Bottom-Right:** Anarcho-Capitalist  
+
+### Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/political_model.git
+   cd political_model
