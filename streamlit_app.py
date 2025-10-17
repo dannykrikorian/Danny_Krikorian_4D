@@ -81,3 +81,8 @@ st.pyplot(fig)
 
 st.markdown("---")
 st.caption("Created with 🟣 **The Purple Initiative** — © 2025 Danny Krikorian")
+st.set_page_config(
+    page_title="The Political Model – The Purple Initiative",
+    page_icon="🟣",
+    layout="wide"
+)
