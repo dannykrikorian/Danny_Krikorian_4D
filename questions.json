@@ -1,0 +1,42 @@
+[
+  {
+    "text": "Government should tax the rich more.",
+    "axis": "x",
+    "weight": -1
+  },
+  {
+    "text": "Corporations should be free from most regulations.",
+    "axis": "x",
+    "weight": 1
+  },
+  {
+    "text": "Abortion should remain legal and accessible.",
+    "axis": "y",
+    "weight": -1
+  },
+  {
+    "text": "Trans people should have equal protection under the law.",
+    "axis": "y",
+    "weight": -1
+  },
+  {
+    "text": "Diversity, Equity & Inclusion programs are beneficial.",
+    "axis": "y",
+    "weight": -1
+  },
+  {
+    "text": "Civil rights laws should be strictly enforced even against private businesses.",
+    "axis": "y",
+    "weight": -1
+  },
+  {
+    "text": "The state should control key industries like energy.",
+    "axis": "x",
+    "weight": -1
+  },
+  {
+    "text": "Private charity should replace most welfare programs.",
+    "axis": "x",
+    "weight": 1
+  }
+]
