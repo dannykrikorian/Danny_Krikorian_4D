@@ -10,27 +10,10 @@ st.set_page_config(
     layout="centered"
 )
 
-# --- SOCIAL PREVIEW METADATA (for link image preview) ---
-st.markdown("""
-    <meta property="og:title" content="🟣 The Political Model – The Purple Initiative" />
-    <meta property="og:description" content="Interactive 2D political compass that maps your position across inclusion–exclusion and authority–anarchy axes." />
-    <meta property="og:image" content="https://raw.githubusercontent.com/dannykrikorian/Danny_Krikorian_4D/main/og-preview.png" />
-    <meta property="og:type" content="website" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/dannykrikorian/Danny_Krikorian_4D/main/og-preview.png" />
-""", unsafe_allow_html=True)
-
 # --- TITLE ---
 st.markdown(
     "<h1 style='text-align:center; color:#6A0DAD;'>🟣 The Political Model</h1>",
     unsafe_allow_html=True
-)
-
-# --- DISPLAY IMAGE UNDER TITLE ---
-st.image(
-    "https://raw.githubusercontent.com/dannykrikorian/Danny_Krikorian_4D/main/og-preview.png",
-    caption="The Purple Initiative – 2D Political Compass",
-    use_container_width=True   # updated parameter (replaces deprecated one)
 )
 
 st.markdown("""
@@ -78,7 +61,7 @@ st.write(f"**Social (X - Inclusion → Exclusion):** {x_norm:.2f}")
 st.write(f"**Economic (Y - Authority → Anarchy):** {y_norm:.2f}")
 
 # --- PLOT RESULTS ---
-fig, ax = plt.subplots(figsize=(6, 6))   # must come before any ax.scatter()
+fig, ax = plt.subplots(figsize=(6, 6))
 ax.axhline(0, color="black", linewidth=0.8)
 ax.axvline(0, color="black", linewidth=0.8)
 
