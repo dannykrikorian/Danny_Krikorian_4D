@@ -5,19 +5,20 @@ from adjustText import adjust_text   # prevents overlapping labels
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
-    # --- SOCIAL PREVIEW METADATA ---
-st.markdown("""
-    <meta property="og:title" content="🟣 The Political Model – The Purple Initiative" />
-    <meta property="og:description" content="Interactive 2D political compass that maps your position across inclusion–exclusion and authority–anarchy axes." />
-    <meta property="og:image" content="https://yourdomain.com/og-preview.png" />
-    <meta property="og:type" content="website" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content="https://yourdomain.com/og-preview.png" />
-""", unsafe_allow_html=True)
     page_title="The Political Model – The Purple Initiative",
     page_icon="🟣",
     layout="centered"
 )
+
+# --- SOCIAL PREVIEW METADATA (for link image preview) ---
+st.markdown("""
+    <meta property="og:title" content="🟣 The Political Model – The Purple Initiative" />
+    <meta property="og:description" content="Interactive 2D political compass that maps your position across inclusion–exclusion and authority–anarchy axes." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/dannykrikorian/political_model/main/og-preview.png" />
+    <meta property="og:type" content="website" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/dannykrikorian/political_model/main/og-preview.png" />
+""", unsafe_allow_html=True)
 
 # --- TITLE ---
 st.markdown(
@@ -77,10 +78,14 @@ ax.axvline(0, color="black", linewidth=0.8)
 ax.scatter(x_norm, y_norm, color="#6A0DAD", s=120, label="You")
 
 # --- CORNER LABELS ---
-ax.text(-1, 1, "Authoritarian Inclusion\n(Communist / Theocratic)", ha="left", va="top", fontsize=9)
-ax.text(1, 1, "Authoritarian Exclusion\n(Fascist / Nationalist)", ha="right", va="top", fontsize=9)
-ax.text(-1, -1, "Anarchic Inclusion\n(Libertarian Socialist)", ha="left", va="bottom", fontsize=9)
-ax.text(1, -1, "Anarchic Exclusion\n(Anarcho-Capitalist)", ha="right", va="bottom", fontsize=9)
+ax.text(-1, 1, "Authoritarian Inclusion\n(Communist / Theocratic)",
+        ha="left", va="top", fontsize=9)
+ax.text(1, 1, "Authoritarian Exclusion\n(Fascist / Nationalist)",
+        ha="right", va="top", fontsize=9)
+ax.text(-1, -1, "Anarchic Inclusion\n(Libertarian Socialist)",
+        ha="left", va="bottom", fontsize=9)
+ax.text(1, -1, "Anarchic Exclusion\n(Anarcho-Capitalist)",
+        ha="right", va="bottom", fontsize=9)
 
 # --- HISTORICAL FIGURES ---
 figures = {
