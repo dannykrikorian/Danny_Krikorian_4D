@@ -1,3 +1,7 @@
+import streamlit as st
+import matplotlib.pyplot as plt
+import json
+from adjustText import adjust_text
 # --- PLOT RESULTS ---
 from adjustText import adjust_text
 
