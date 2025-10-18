@@ -25,6 +25,14 @@ st.markdown(
     "<h1 style='text-align:center; color:#6A0DAD;'>🟣 The Political Model</h1>",
     unsafe_allow_html=True
 )
+
+# --- SHOW IMAGE UNDER TITLE ---
+st.image(
+    "https://raw.githubusercontent.com/dannykrikorian/political_model/main/og-preview.png",
+    caption="The Purple Initiative – 2D Political Compass",
+    use_column_width=True
+)
+
 st.markdown("""
 Answer each question to find your position on the **Economic (Authority–Anarchy)** 
 and **Social (Inclusion–Exclusion)** axes.
