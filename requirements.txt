@@ -2,3 +2,5 @@ streamlit
 plotly
 streamlit
 matplotlib
+adjustText
+pip install adjustText
