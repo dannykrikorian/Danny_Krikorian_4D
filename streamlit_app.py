@@ -5,9 +5,12 @@ st.set_page_config(page_title="Political Model Test", page_icon="📊", layout="
 
 st.title("🧭 The Political Model Test")
 st.write("""
-This model maps ideology across **two major dimensions** —  
-**Social (Inclusion → Exclusion)** and **Economic (Authority → Anarchy)**.  
-Answer each statement honestly from **Strongly Agree** to **Strongly Disagree**.
+This model maps ideology across **two core dimensions**:
+
+**Social (X-axis: Inclusion → Exclusion)**  
+**Economic (Y-axis: Authority → Anarchy)**  
+
+Your answers determine where you fall in relation to key public figures and ideological poles.
 """)
 
 # ─────────────────────────────
@@ -30,7 +33,7 @@ economic_questions = [
 ]
 
 # ─────────────────────────────
-# RESPONSE SCALE
+# SCALE
 # ─────────────────────────────
 options = {
     "Strongly Agree": 2,
@@ -41,51 +44,72 @@ options = {
 }
 
 # ─────────────────────────────
-# SOCIAL DIMENSION
+# SOCIAL SECTION
 # ─────────────────────────────
 st.header("🌐 Social Dimension (Inclusion → Exclusion)")
 social_total = 0
 for q in social_questions:
     choice = st.radio(q, list(options.keys()), index=2, key=q)
     social_total += options[choice]
-
-# Normalize (divide by number of questions)
 social_score = social_total / len(social_questions)
 
 # ─────────────────────────────
-# ECONOMIC DIMENSION
+# ECONOMIC SECTION
 # ─────────────────────────────
 st.header("⚙️ Economic Dimension (Authority → Anarchy)")
 economic_total = 0
 for q in economic_questions:
     choice = st.radio(q, list(options.keys()), index=2, key=q)
     economic_total += options[choice]
-
 economic_score = economic_total / len(economic_questions)
 
 # ─────────────────────────────
-# FINAL OUTPUT
+# RESULTS
 # ─────────────────────────────
 st.subheader("📈 Your Coordinates")
 st.write(f"**Social (X - Inclusion → Exclusion):** {social_score:.2f}")
 st.write(f"**Economic (Y - Authority → Anarchy):** {economic_score:.2f}")
 
 # ─────────────────────────────
-# COORDINATE PLOT
+# PLOT
 # ─────────────────────────────
-fig, ax = plt.subplots(figsize=(5, 5))
+fig, ax = plt.subplots(figsize=(6,6))
 ax.set_xlim(-2, 2)
 ax.set_ylim(-2, 2)
+
+# Grid lines and axes
 ax.axhline(0, color='gray', linewidth=0.8)
 ax.axvline(0, color='gray', linewidth=0.8)
+
+# Axis labels
 ax.set_xlabel("Social: Inclusion → Exclusion")
 ax.set_ylabel("Economic: Authority → Anarchy")
 
-# Plot the user coordinate
-ax.scatter(social_score, economic_score, color='red', s=100, zorder=5)
-ax.text(social_score + 0.1, economic_score + 0.1, "You", color='white', fontsize=12, fontweight='bold')
+# Quadrant labels
+ax.text(-1.8, 1.7, "Communism", color='red', fontsize=11, fontweight='bold')
+ax.text(1.2, 1.7, "Fascism", color='gold', fontsize=11, fontweight='bold')
+ax.text(-1.8, -1.8, "Libertarian", color='green', fontsize=11, fontweight='bold')
+ax.text(1.0, -1.8, "Anarcho-Capitalist", color='orange', fontsize=11, fontweight='bold')
 
-# Dark theme
+# Reference political figures
+# (X = Social inclusion→exclusion, Y = Authority→anarchy)
+references = {
+    "AOC": (-1.3, -0.8),
+    "Obama": (-0.5, -0.3),
+    "Biden": (-0.2, 0.0),
+    "Trump": (1.0, 0.3),
+    "Thomas Massie": (1.2, -1.2)
+}
+
+for name, (x, y) in references.items():
+    ax.scatter(x, y, color='white', s=60, edgecolors='black', zorder=5)
+    ax.text(x + 0.05, y + 0.05, name, color='white', fontsize=10, fontweight='bold')
+
+# User point
+ax.scatter(social_score, economic_score, color='red', s=100, zorder=6)
+ax.text(social_score + 0.08, economic_score + 0.08, "You", color='white', fontsize=12, fontweight='bold')
+
+# Dark theme adjustments
 ax.set_facecolor("#0e1117")
 fig.patch.set_facecolor("#0e1117")
 ax.tick_params(colors='white')
@@ -99,12 +123,32 @@ st.pyplot(fig)
 # ─────────────────────────────
 st.markdown("### 🧩 Interpretation")
 if social_score < 0 and economic_score < 0:
-    st.write("You lean toward **inclusive authority** — valuing equality and social welfare with structured governance.")
+    st.write("""
+You align with **Inclusive-Anarchic** tendencies —  
+valuing diversity, mutual aid, and individual freedom over hierarchy.  
+This quadrant represents decentralized, egalitarian, and libertarian-left ideals.
+""")
 elif social_score > 0 and economic_score < 0:
-    st.write("You lean toward **exclusive authority** — valuing order, hierarchy, and tradition.")
+    st.write("""
+You align with **Exclusive-Anarchic** tendencies —  
+emphasizing independence, minimal government, and skepticism toward outsiders.  
+Typically associated with right-libertarian or market-individualist schools.
+""")
 elif social_score < 0 and economic_score > 0:
-    st.write("You lean toward **inclusive anarchy** — emphasizing individual freedom and multiculturalism.")
+    st.write("""
+You align with **Inclusive-Authoritarian** tendencies —  
+favoring social equality and state intervention to protect the common good.  
+This includes progressive socialists and regulated-welfare models.
+""")
 elif social_score > 0 and economic_score > 0:
-    st.write("You lean toward **exclusive anarchy** — emphasizing freedom for the self, independence, and skepticism of outsiders.")
+    st.write("""
+You align with **Exclusive-Authoritarian** tendencies —  
+prioritizing order, hierarchy, nationalism, and centralized authority.  
+Historically linked to nationalist or corporatist movements.
+""")
 else:
-    st.write("You appear **centrist** — balanced between inclusion and exclusion, authority and liberty.")
+    st.write("""
+You appear **Centrally balanced** —  
+valuing both cooperation and structure, freedom and responsibility.  
+This reflects pragmatic moderation or mixed-economy democracy.
+""")
